@@ -5,7 +5,7 @@ export const globalOptions = {
   "screenOptions": {
     "headerShown": false
   },
-  "initialRoute": "AboutTheAppScreen1"
+  "initialRoute": "aboutTheApp"
 };
 export const modulesOptions = {
   "@modules/app-menu": {
