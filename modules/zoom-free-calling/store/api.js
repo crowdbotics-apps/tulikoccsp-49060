@@ -1,14 +1,15 @@
 import axios from "axios";
 import options from "../options";
 import base64 from "react-native-base64";
-
 const BASE_URL = "https://api.zoom.us";
-
 const authAPI = axios.create({
   baseURL: BASE_URL
 });
 
-function getOauthToken({ code, codeVerifier }) {
+function getOauthToken({
+  code,
+  codeVerifier
+}) {
   return authAPI.post(`/oauth/token?code=${code}&grant_type=authorization_code&redirect_uri=${options.REDIRECT_URI}&code_verifier=${codeVerifier}`, {}, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -26,7 +27,11 @@ function getCurrentUser(token) {
   });
 }
 
-function createMeeting({ userId, payload, token }) {
+function createMeeting({
+  userId,
+  payload,
+  token
+}) {
   return authAPI.post(`/v2/users/${userId}/meetings`, payload, {
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +40,10 @@ function createMeeting({ userId, payload, token }) {
   });
 }
 
-function getMeetingList({ userId, token }) {
+function getMeetingList({
+  userId,
+  token
+}) {
   return authAPI.get(`/v2/users/${userId}/meetings?type=upcoming`, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
