@@ -8,6 +8,24 @@ function api_docs_schema_retrieve(payload) {
     params: { lang: payload.lang }
   })
 }
+function api_v1_appinfo_list(payload) {
+  return tulikoccspAPI.get(`/api/v1/appinfo/`)
+}
+function api_v1_appinfo_create(payload) {
+  return tulikoccspAPI.post(`/api/v1/appinfo/`, payload)
+}
+function api_v1_appinfo_retrieve(payload) {
+  return tulikoccspAPI.get(`/api/v1/appinfo/${payload.id}/`)
+}
+function api_v1_appinfo_update(payload) {
+  return tulikoccspAPI.put(`/api/v1/appinfo/${payload.id}/`, payload)
+}
+function api_v1_appinfo_partial_update(payload) {
+  return tulikoccspAPI.patch(`/api/v1/appinfo/${payload.id}/`, payload)
+}
+function api_v1_appinfo_destroy(payload) {
+  return tulikoccspAPI.delete(`/api/v1/appinfo/${payload.id}/`)
+}
 function api_v1_login_create(payload) {
   return tulikoccspAPI.post(`/api/v1/login/`, payload)
 }
@@ -49,6 +67,12 @@ function rest_auth_user_partial_update(payload) {
 }
 export const apiService = {
   api_docs_schema_retrieve,
+  api_v1_appinfo_list,
+  api_v1_appinfo_create,
+  api_v1_appinfo_retrieve,
+  api_v1_appinfo_update,
+  api_v1_appinfo_partial_update,
+  api_v1_appinfo_destroy,
   api_v1_login_create,
   api_v1_signup_create,
   rest_auth_login_create,
